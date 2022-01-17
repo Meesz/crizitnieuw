@@ -13,6 +13,7 @@ const Featureblock = styled.div`
   align-items: center;
   color: white;
   padding-bottom: 1rem;
+  margin: 10px;
 `;
 
 const FeatureImg = styled.div`

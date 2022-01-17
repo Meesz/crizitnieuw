@@ -46,7 +46,7 @@ const NavContent = styled.div`
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
-  margin: auto;
+  margin: 0 40rem;
   a {
     color: white;
     font-weight: 600;

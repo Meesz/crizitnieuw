@@ -27,14 +27,9 @@ const CheckSection = styled.section`
 `;
 
 const Header = styled.section`
-  padding-top: 10rem;
-  padding-bottom: 15rem;
+  position: relative;
+  padding-top: 25rem;
   margin-bottom: 10rem;
-  color: white;
-  h4 {
-    font-size: 4rem;
-    line-height: 1rem;
-  }
   background-image: url("https://crizit.com/assets/images/home-hero-bg-desktop.svg");
   background-position: right bottom;
   background-repeat: no-repeat;
@@ -57,26 +52,60 @@ const StyledInformation = styled.section`
     text-align: center;
   }
 
+  .content {
+    margin-top: -10rem;
+  }
+
   .checktext {
     font-family: "Nunito", sans-serif;
     max-width: 25rem;
   }
 `;
 
+const HeaderContent = styled.div`
+  position: absolute;
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+  color: white;
+  letter-spacing: 1px;
+  h1 {
+    font-size: 4.4rem;
+    line-height: 0.1rem;
+    font-weight: bold;
+  }
+  p {
+    font-family: "Nunito", sans-serif;
+    font-size: 2rem;
+    max-width: 50rem;
+    line-height: 3rem;
+  }
+  z-index: 100;
+`;
+
 const Featured = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  padding: 5px;
 `;
 
 const StyledProductSection = styled.section`
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 10rem;
 `;
 
 const StyledHomeContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0 40rem;
+`;
+
+const StyledMarketSection = styled.section`
+display: flex;
+  background-color: rgb(32, 74, 140);
+  height: 10rem;
+  width: 100%;
+  color: white;
 `;
 
 export const Home = () => {
@@ -92,24 +121,26 @@ export const Home = () => {
       <Modal showModal={openModal} setShowModal={setOpenModal}></Modal>
       <StyledHomeContainer>
         <Header>
-          <CheckSection>
-            <span className="checkmark">&#10003;</span>
-            <p className="checktext">SEE CLEARLY</p>
-            <span className="checkmark">&#10003;</span>
-            <p className="checktext">TAKE ACTION</p>
-            <span className="checkmark">&#10003;</span>
-            <p className="checktext">OPTIMIZE COST</p>
-          </CheckSection>
-          <ColorBar />
-          <h4>Control Your Data Costs</h4>
-          <p>
-            Monitor use in real-time, identify inefficient sourcing and reduce
-            reference data spends
-          </p>
-          <StyledButton
-            text="Request whitepaper"
-            onClick={handleModal}
-          ></StyledButton>
+          <HeaderContent>
+            <CheckSection>
+              <span className="checkmark">&#10003;</span>
+              <p className="checktext">SEE CLEARLY</p>
+              <span className="checkmark">&#10003;</span>
+              <p className="checktext">TAKE ACTION</p>
+              <span className="checkmark">&#10003;</span>
+              <p className="checktext">OPTIMIZE COST</p>
+            </CheckSection>
+            <ColorBar />
+            <h1>Control Your Data Costs</h1>
+            <p>
+              Monitor use in real-time, identify inefficient sourcing and reduce
+              reference data spends
+            </p>
+            <StyledButton
+              text="Request whitepaper"
+              onClick={handleModal}
+            ></StyledButton>
+          </HeaderContent>
         </Header>
         <StyledInformation>
           <h2>All your data in one platform</h2>
@@ -144,7 +175,7 @@ export const Home = () => {
           description="Our cloud-based optimization tool lets you measure vendor data
           usage in real-time, get instant alerts for irregular use
           patterns and receive cost reduction recommendations."
-          order={true}
+          order={false}
         ></Product>
         <Product
           imageUrl="https://crizit.com/assets/images/product-2-mobile.svg"
@@ -152,7 +183,6 @@ export const Home = () => {
           description="We provide project based in-depth vendor data integration,
                   custom reporting and cost analysis assessment services, so you
                   can optimize data use savings across your entire organization."
-          order={false}
         ></Product>
         <Product
           imageUrl="https://crizit.com/assets/images/product-3-mobile.svg"
@@ -160,9 +190,14 @@ export const Home = () => {
           description="We build custom fintech focused software we for enterprise
           clients that prioritizes penetration-tested security, UX
           functionality and metrics driven design."
-          order="1"
         ></Product>
       </StyledProductSection>
+      <StyledMarketSection>
+        <div>
+        <h2>Market Data costs optimized</h2>
+        <ColorBar />
+        </div>
+      </StyledMarketSection>
     </>
   );
 };
