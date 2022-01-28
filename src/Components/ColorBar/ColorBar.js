@@ -9,6 +9,7 @@ export const ColorBar = () => {
 }
 
 const Bar = styled.div`
+    display: block;
     width: 3rem;
     height: 0.3rem;
     background-color: rgb(0, 172, 255);

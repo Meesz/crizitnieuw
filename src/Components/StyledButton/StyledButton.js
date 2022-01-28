@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CustomButton = styled.button`
+font-family: "Poppins, sans-serif"
   text-align: center;
   border: none;
   outline: none;
@@ -19,7 +20,7 @@ const CustomButton = styled.button`
 
 export const StyledButton = (props) => {
     return (
-        <CustomButton>{props.text}</CustomButton>
+        <CustomButton {...props}>{props.text}</CustomButton>
     )
 
 };

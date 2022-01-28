@@ -6,27 +6,26 @@ const Background = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
-  z-index: 1000;
+  z-index: 10;
 `;
 
 const ModalWrapper = styled.div`
-  z-index: 10000;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1060;
   width: 100%;
   height: 100%;
 `;
 
 const ModalContainer = styled.div`
   border-radius: 10px;
-  background: rgb(22, 45, 72) none repeat scroll 0% 0%;
+  background: rgb(22, 45, 72);
   width: 250px;
   height: 250px;
   color: white;
   padding: 6rem 11rem;
+  
 `;
 
 const ModalContent = styled.div`
@@ -37,6 +36,7 @@ const ModalContent = styled.div`
   -moz-box-pack: center;
   justify-content: center;
   text-align: center;
+  
 `;
 
 const SubmitButton = styled.button`
@@ -58,6 +58,7 @@ export const Modal = ({ showModal, setShowModal }) => {
   const handleClick = () => {
     setShowModal((prev) => !prev);
   };
+
 
   return (
     <>

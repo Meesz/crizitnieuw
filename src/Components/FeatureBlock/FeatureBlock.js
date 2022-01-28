@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Featureblock = styled.div`
   background-color: rgb(19, 37, 58);
   height: 10rem;
-  z-index: 1;
   border-radius: 25px;
   width: 25rem;
   display: flex;
@@ -18,7 +17,6 @@ const Featureblock = styled.div`
 
 const FeatureImg = styled.div`
   margin-top: -2rem;
-  z-index: 1;
   img{
     width: 6rem;
     height: 6rem;

@@ -57,7 +57,7 @@ const NavContent = styled.div`
     &:hover{
       user-select: none;
       text-decoration: none;
-      border-bottom: solid 0.2rem rgb(0, 172, 255);
+      border-bottom: solid 0.4rem rgb(0, 172, 255);
       color: white;
       padding-bottom: 10px;
     }
