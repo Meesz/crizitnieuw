@@ -1,10 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import LogoImg from "./crizit.jpg";
 import styled from "styled-components";
+import "./styles.css"
 
-export const NavBar = ({ state, setState }) => {
+export const NavBar = () => {
+  const [colorChange, setColorchange] = useState(false);
+  const changeNavbarColor = () =>{
+     if(window.scrollY >= 40){
+       setColorchange(true);
+     }
+     else{
+       setColorchange(false);
+     }
+  };
+  window.addEventListener('scroll', changeNavbarColor);
   return (
-    <Nav>
+    <div className={colorChange ? 'navbar.transparent' : 'navbar'}>
+      <Nav>
       <NavContent>
         
           <img src={LogoImg} alt="err"></img>
@@ -23,18 +35,16 @@ export const NavBar = ({ state, setState }) => {
           </a>
         </NavItems>
       </NavContent>
-    </Nav>
+      </Nav>
+      </div>
   );
 };
 
 const Nav = styled.div`
-  background-color: rgb(19, 37, 58) transparent;
-  top: 0px;
+  top: 0;
   position: fixed;
-  z-index: 10;
-  width: 100%;
-  height: 5rem;
 `;
+
 
 const NavItems = styled.div`
 `;
@@ -46,7 +56,7 @@ const NavContent = styled.div`
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
-  margin: 0 40rem;
+  margin: 0 auto;
   a {
     color: white;
     font-weight: 600;

@@ -29,7 +29,7 @@ const CheckSection = styled.section`
 `;
 
 const Header = styled.section`
-  padding-top: 25rem;
+  padding-top: 15rem;
   margin-bottom: 5rem;
   background-image: url("https://crizit.com/assets/images/home-hero-bg-desktop.svg");
   background-position: right bottom;
