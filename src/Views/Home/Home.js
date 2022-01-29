@@ -7,6 +7,7 @@ import { StyledButton } from "../../Components/StyledButton/StyledButton";
 import { Product } from "../../Components/Product/Product";
 import { MarketFeatureBlock } from "../../Components/FeatureBlock/MarketFeatureBlock";
 import { CustomerBlock } from "../../Components/FeatureBlock/CustomerBlock";
+import axios from "axios";
 
 const CheckSection = styled.section`
   display: flex;
@@ -29,12 +30,14 @@ const CheckSection = styled.section`
 `;
 
 const Header = styled.section`
-  padding-top: 15rem;
+  margin: 0 auto;
+  padding-top: 12em;
   margin-bottom: 5rem;
   background-image: url("https://crizit.com/assets/images/home-hero-bg-desktop.svg");
   background-position: right bottom;
   background-repeat: no-repeat;
-  height: 23rem;
+  z-index: -1;
+  max-width: 80em;
 `;
 
 const StyledInformation = styled.section`
@@ -64,10 +67,9 @@ const StyledInformation = styled.section`
 `;
 
 const HeaderContent = styled.div`
-  position: absolute;
-  margin-top: -10rem;
-  margin-bottom: 10rem;
+  padding-bottom: 10rem;
   color: white;
+
   letter-spacing: 1px;
   h1 {
     font-size: 4.4rem;
@@ -91,10 +93,6 @@ const Featured = styled.section`
 `;
 
 const StyledProductSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 10rem;
   P {
     font-size: 1.3rem;
@@ -109,10 +107,10 @@ const StyledProductSection = styled.section`
 `;
 
 const StyledHomeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  max-width: 800px;
+  // display: flex;
+  // flex-direction: column;
+  // margin: 0 auto;
+  // max-width: 800px;
 `;
 
 const StyledMarketSection = styled.section`
@@ -130,7 +128,7 @@ const StyledMarketSection = styled.section`
 `;
 
 const AuditSection = styled.section`
-  padding: 10rem 0px;
+  padding: 5rem 0px;
   text-align: center;
   background-repeat: no-repeat;
   background-image: url("https://crizit.com/assets/images/cta-bg.svg");
@@ -178,15 +176,72 @@ const CustomerContent = styled.div`
 
 export const Home = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [data, setData] = useState("");
+  const [info, setData] = useState("");
   const handleModal = () => {
     setOpenModal((prev) => !prev);
     console.log(openModal);
   };
 
+  const getRequest = async () => {
+    const number = Math.floor(Math.random() * (10 - 1 + 1) + 1);
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/todos/" + number
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const postRequest = async () => {
+    if(info === ""){
+      alert('U moet gegevens invullen!');
+      return;
+    }
+    const newUser = {
+      name: info,
+    };
+
+    try {
+      const response = await axios.post(
+        "https://jsonplaceholder.typicode.com/todos",
+        newUser
+      );
+      console.log(response.data);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const deleteUser = async () => {
+    //Get index of user
+    //const index = getIndexOf(user)
+    const user = {
+      name: info,
+    };
+    try {
+      const resp = await axios.delete(
+        "https://jsonplaceholder.typicode.com/todos/1",
+        user
+      );
+      alert("Succes");
+      console.log("Succes");
+    } catch (err) {
+      // Handle Error Here
+
+      console.error(err);
+    }
+  };
+
   return (
     <>
-      <Modal showModal={openModal} setShowModal={setOpenModal}></Modal>
+      <Modal
+        showModal={openModal}
+        setShowModal={setOpenModal}
+        setData={setData}
+        sendData={postRequest}
+      ></Modal>
       <StyledHomeContainer>
         <Header>
           <HeaderContent>
@@ -241,7 +296,7 @@ export const Home = () => {
       </StyledHomeContainer>
       <StyledProductSection>
         <Product
-          order={false}
+          order={true}
           imageUrl="https://crizit.com/assets/images/product-1-mobile.svg"
           title="Crizit Periscope"
           description="Our cloud-based optimization tool lets you measure vendor data
@@ -254,7 +309,7 @@ export const Home = () => {
           description="We provide project based in-depth vendor data integration,
                   custom reporting and cost analysis assessment services, so you
                   can optimize data use savings across your entire organization."
-          order={true}
+          order={false}
         ></Product>
         <Product
           imageUrl="https://crizit.com/assets/images/product-3-mobile.svg"
@@ -288,7 +343,7 @@ export const Home = () => {
           <p>Our happy customers</p>
         </div>
         <CustomerContent>
-          <CustomerBlock imageUrl="https://s3-eu-west-1.amazonaws.com/media.belsimpel.nl/Nieuws/Google-app-logo.png"></CustomerBlock>
+          <span>Arrow</span>
           <CustomerBlock imageUrl="https://s3-eu-west-1.amazonaws.com/media.belsimpel.nl/Nieuws/Google-app-logo.png"></CustomerBlock>
           <CustomerBlock imageUrl="https://s3-eu-west-1.amazonaws.com/media.belsimpel.nl/Nieuws/Google-app-logo.png"></CustomerBlock>
           <CustomerBlock imageUrl="https://s3-eu-west-1.amazonaws.com/media.belsimpel.nl/Nieuws/Google-app-logo.png"></CustomerBlock>
@@ -302,7 +357,10 @@ export const Home = () => {
             Our market data cost reduction tool is easy to use and <br /> your
             first audit is free.
           </p>
-          <StyledButton text="Request Audit"></StyledButton>
+          <StyledButton
+            text="Request Audit"
+            onClick={getRequest}
+          ></StyledButton>
         </AuditContent>
       </AuditSection>
     </>

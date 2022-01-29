@@ -1,13 +1,17 @@
 .navbar.transparent{
-    background-color:black solid;
-    z-index: 100;
+  background-color: rgb(19, 37, 58);
   width: 100%;
   height: 5rem;
+  top: 0px;
+  position: fixed;
+  z-index: 10;
 }
 
 .navbar{
-    background-color: transparent rgb(19, 37, 58) ease 0.8ss;
-    z-index: 100;
+  background-color: transparent;
   width: 100%;
   height: 5rem;
+  top: 0px;
+  position: fixed;
+  z-index: 10;
 }

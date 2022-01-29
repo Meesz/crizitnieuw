@@ -6,14 +6,21 @@ import { StyledButton } from "../StyledButton/StyledButton";
 const StyledProductContainer = styled.div`
   color: white;
   display: flex;
-  padding-top: 5rem;
+  padding-top: 5em;
+  width: 100%;
   padding-bottom: 5rem;
   max-width: 70rem;
   margin: 0 auto;
   text-align: center;
-  flex-direction: ${(props) => props.order ? "row" : "row-reversed"};
+  justify-content: space-around;
+  flex-direction: ${(props) => props.order ? "row" : "row-reverse"};
   gap: 100px;
 `;
+
+const OrderDirection = {
+  1: "row",
+  2: "row-reverse",
+}
 
 const StyledProductImg = styled.div`
   width: 50rem;

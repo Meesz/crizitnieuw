@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Logo from "../Navbar/crizit.jpg"
 
 const StyledFooterContainer = styled.div`
-  padding: 0 40rem;
+  padding: 2em;
+  max-width: 70em;
+  margin: 0 auto;
+  bottom: 0;
 `;
 
 const FooterBackGround = styled.div`
@@ -38,11 +41,7 @@ const FooterCopyright = styled.div`
   color: white;
 `;
 
-const StyledHr = styled.hr`
-  color: white;
-  height: 1rem;
-  width: 100%;
-`;
+
 
 export const Footer = () => {
   return (
@@ -56,6 +55,7 @@ export const Footer = () => {
             <br />
             New York, NY 10001 USA
             <br />
+            
             Phone: (646) 736-4066
             <br />
             Email: contact@crizit.com

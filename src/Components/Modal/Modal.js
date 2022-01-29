@@ -54,7 +54,9 @@ const SubmitButton = styled.button`
   text-transform: uppercase;
 `;
 
-export const Modal = ({ showModal, setShowModal }) => {
+
+
+export const Modal = ({ showModal, setShowModal, sendData, setData }) => {
   const handleClick = () => {
     setShowModal((prev) => !prev);
   };
@@ -70,9 +72,10 @@ export const Modal = ({ showModal, setShowModal }) => {
                 <h3>Download our Market Data Optimization Whitepaper</h3>
                 <p>enter your email</p>
                 <form>
-                  <input />
+                  <input onChange={e => setData(e.target.value)} />
                 </form>
-                <SubmitButton>Submit</SubmitButton>
+                <SubmitButton onClick={sendData}>Submit</SubmitButton>
+                <small></small>
                 <SubmitButton onClick={handleClick}>click me</SubmitButton>
               </ModalContent>
             </ModalContainer>

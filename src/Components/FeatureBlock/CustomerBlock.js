@@ -5,9 +5,9 @@ const BlockWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(32,74,140);
+  background-color: #0d6efd;
   height: 5rem;
-  width: 25rem;
+  width: 35em;
   padding: 10px;
   border-radius: 25px;
   img{

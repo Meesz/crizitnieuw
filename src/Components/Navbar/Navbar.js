@@ -15,10 +15,9 @@ export const NavBar = () => {
   };
   window.addEventListener('scroll', changeNavbarColor);
   return (
-    <div className={colorChange ? 'navbar.transparent' : 'navbar'}>
+    <div className={colorChange ? 'navbar transparent' : 'navbar'}>
       <Nav>
       <NavContent>
-        
           <img src={LogoImg} alt="err"></img>
         <NavItems>
           <a href="/">
@@ -41,8 +40,7 @@ export const NavBar = () => {
 };
 
 const Nav = styled.div`
-  top: 0;
-  position: fixed;
+
 `;
 
 
@@ -55,8 +53,9 @@ const NavContent = styled.div`
   // }
   padding-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
+  max-width: 125em;
   a {
     color: white;
     font-weight: 600;
